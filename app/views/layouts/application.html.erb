@@ -14,6 +14,12 @@
   <body>
     <div class="top-container">
       <h1>Little Esty Shop - Final</h1>
+      <nav>
+        <ul>
+          <li><%= link_to 'Admin Dashboard', admin_dashboard_index_path %></li>
+          <li><%= link_to 'Merchants Index', merchants_path %></li>
+        </ul>
+      </nav>
       <div class="container">
         <% flash.each do |type, notice| %>
           <h5 class="text-info"><b><%= notice %></b></h5>

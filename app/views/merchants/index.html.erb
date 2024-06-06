@@ -1,0 +1,6 @@
+<h2>Merchants</h2>
+  <% @merchants.each do |m|%>
+    <div>
+      <%= "Name: "%><%= link_to m.name, merchant_dashboard_index_path(m.id) %>
+    </div>
+  <% end %>
