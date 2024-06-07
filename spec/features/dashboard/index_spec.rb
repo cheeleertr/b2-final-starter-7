@@ -128,4 +128,6 @@ RSpec.describe "merchant dashboard" do
 
     expect(current_path).to eq("/merchants/#{@merchant1.id}/bulk_discounts")
   end
+
+
 end
