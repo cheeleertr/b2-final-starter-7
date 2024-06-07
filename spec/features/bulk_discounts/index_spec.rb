@@ -44,12 +44,10 @@ describe "merchant bulk_discounts index" do
     expect(page).to have_content("Discount: ##{@bulk_discount1.id}, Quantity Threshold: #{@bulk_discount1.quantity_threshold}, Percent Discount: #{@bulk_discount1.percent_discount}")
 
     within "#discount_#{@bulk_discount1.id}" do
-      click_button "Delete #{@bulk_discount1}"
+      click_button "Delete ##{@bulk_discount1.id}"
     end
 
     expect(page).to_not have_link("#{@bulk_discount1.id}", href: merchant_bulk_discount_path(@merchant1, @bulk_discount1))
     expect(page).to_not have_content("Discount: ##{@bulk_discount1.id}, Quantity Threshold: #{@bulk_discount1.quantity_threshold}, Percent Discount: #{@bulk_discount1.percent_discount}")
-
-    expect(page).to_not have
   end
 end
