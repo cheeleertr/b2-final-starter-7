@@ -7,47 +7,42 @@ class BulkDiscountsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
-    if @item.update(item_params)
-      flash.notice = "Succesfully Updated Item Info!"
-      redirect_to merchant_item_path(@merchant, @item)
+    if @bulk_discount.update(bulk_bulk_discount_params)
+      flash.notice = "Succesfully Updated bulk_discount Info!"
+      redirect_to merchant_bulk_discount_path(@merchant, @bulk_discount)
     else
       flash.notice = "All fields must be completed, get your act together."
-      redirect_to edit_merchant_item_path(@merchant, @item)
+      redirect_to edit_merchant_bulk_discount_path(@merchant, @bulk_discount)
     end
   end
 
   def new
-
   end
 
   def create
-    Item.create!(name: params[:name],
-                description: params[:description],
-                unit_price: params[:unit_price],
+    BulkDiscount.create!(quantity_threshold: params[:quantity_threshold],
+                percent_discount: params[:percent_discount],
                 merchant: @merchant)
-    redirect_to merchant_items_path(@merchant)
+    redirect_to merchant_bulk_discounts_path(@merchant)
   end
 
   private
-  def item_params
-    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
+  def bulk_discount_params
+    params.require(:bulk_discount).permit(:quantity_threshold, :percent_discount, :merchant_id)
   end
 
-  def find_item_and_merchant
-    @item = Item.find(params[:id])
+  def find_bulk_discount_and_merchant
+    @bulk_discount = BulkDiscount.find(params[:id])
     @merchant = Merchant.find(params[:merchant_id])
   end
 
   def find_merchant
     @merchant = Merchant.find(params[:merchant_id])
   end
-
 end
