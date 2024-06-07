@@ -7,7 +7,6 @@ RSpec.describe BulkDiscount, type: :model do
     it { should validate_presence_of :merchant_id }
   end
   describe "relationships" do
-    it { should have_many(:items).through(:bulk_discount_items) }
     it { should belong_to :merchant }
   end
 end
