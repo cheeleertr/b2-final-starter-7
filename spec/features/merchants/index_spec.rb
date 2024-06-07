@@ -7,12 +7,11 @@ RSpec.describe "merchant index" do
   end
 
   it "returns list of all merchants names as a link to its dashboard index" do
-    visit "/merchants" do
+    visit "/merchants"
 
-      expect(page).to have content("Name: #{@merchant1.name}")
-      expect(page).to have content("Name: #{@merchant2.name}")
-      expect(page).to have link("#{@merchant1.name}", href: "/merchants/#{@merchant1.id}/dashboard")
-      expect(page).to have link("#{@merchant2.name}", href: "/merchants/#{@merchant2.id}/dashboard")
-    end
+    expect(page).to have_content("Name: #{@merchant1.name}")
+    expect(page).to have_content("Name: #{@merchant2.name}")
+    expect(page).to have_link("#{@merchant1.name}", href: "/merchants/#{@merchant1.id}/dashboard")
+    expect(page).to have_link("#{@merchant2.name}", href: "/merchants/#{@merchant2.id}/dashboard")
   end
 end

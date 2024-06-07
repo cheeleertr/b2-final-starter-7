@@ -13,7 +13,7 @@ class BulkDiscountsController < ApplicationController
   end
 
   def update
-    if @bulk_discount.update(bulk_bulk_discount_params)
+    if @bulk_discount.update(bulk_discount_params)
       flash.notice = "Succesfully Updated bulk_discount Info!"
       redirect_to merchant_bulk_discount_path(@merchant, @bulk_discount)
     else
