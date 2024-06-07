@@ -1,0 +1,3 @@
+<%= render partial: "shared/nav" %>
+
+<%= render partial: 'form', locals: { method: :patch, url: "/merchants/#{@merchant.id}/bulk_discounts/#{@bulk_discount.id}", class: 'merchant_item_form', local: true, model: @bulk_discount } %>
