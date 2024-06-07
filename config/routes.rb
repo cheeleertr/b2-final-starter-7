@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
     resources :invoices, only: [:index, :show, :update]
+    resources :bulk_discounts, except: [:update]
   end
+
+  patch  "/merchants/:merchant_id/bulk_discounts/:id", to: "bulk_discounts#update"
 
   namespace :admin do
     resources :dashboard, only: [:index]
