@@ -3,7 +3,6 @@ class InvoicesController < ApplicationController
   before_action :find_merchant, only: [:index]
 
   def index
-    # pry
     @invoices = @merchant.invoices
   end
 
