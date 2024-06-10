@@ -100,4 +100,33 @@ RSpec.describe "invoices show" do
     end
   end
 
+  #US6
+  it "shows the total revenue with bulk discount for this invoice" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+
+    expect(page).to have_content(@invoice_1.merchant_discounted_revenue(@merchant1.id))
+  end
+  #US6
+  it "shows the total personal revenue for this invoice" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+
+    expect(page).to have_content(@invoice_1.merchant_revenue(@merchant1.id))
+  end
+  #US7
+  it "has a link to the applied discount next to each invoice item" do
+    @discount1 = @merchant1.bulk_discounts.create!(percent_discount: 10, quantity_threshold: 5)
+    @discount2 = @merchant1.bulk_discounts.create!(percent_discount: 20, quantity_threshold: 10)
+    @discount3 = @merchant1.bulk_discounts.create!(percent_discount: 30, quantity_threshold: 15)
+    @ii_8 = InvoiceItem.create!(invoice_id: @invoice_7.id, item_id: @item_8.id, quantity: 10, unit_price: 5, status: 1)
+    @ii_9 = InvoiceItem.create!(invoice_id: @invoice_7.id, item_id: @item_4.id, quantity: 15, unit_price: 1, status: 1)
+
+    visit merchant_invoice_path(@merchant1, @invoice_7)
+
+    within "#the-status-#{@ii_8.id}" do
+      expect(page).to have_link("#{@ii_8.highest_discount.percent_discount}%", href:  merchant_bulk_discount_path(@merchant1, @discount2))
+    end
+    within "#the-status-#{@ii_9.id}" do
+      expect(page).to have_link("#{@ii_9.highest_discount.percent_discount}%", href:  merchant_bulk_discount_path(@merchant1, @discount3))
+    end
+  end
 end
