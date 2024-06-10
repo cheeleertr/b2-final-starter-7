@@ -16,7 +16,6 @@ class InvoiceItem < ApplicationRecord
   end
 
   def highest_discount
-    # pry
     item.merchant.bulk_discounts
     .joins(merchant: {items: :invoice_items})
     .where("quantity >= bulk_discounts.quantity_threshold and invoice_items.id = ?", self.id, )

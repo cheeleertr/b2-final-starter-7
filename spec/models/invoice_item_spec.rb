@@ -42,6 +42,7 @@ RSpec.describe InvoiceItem, type: :model do
     it 'highest_discount' do
       @discount1 = @m1.bulk_discounts.create!(percent_discount: 20, quantity_threshold: 5)
       @discount2 = @m1.bulk_discounts.create!(percent_discount: 10, quantity_threshold: 2)
+      @discount3 = @m1.bulk_discounts.create!(percent_discount: 30, quantity_threshold: 20)
       
       expect(@ii_1.highest_discount).to eq(@discount1)
     end

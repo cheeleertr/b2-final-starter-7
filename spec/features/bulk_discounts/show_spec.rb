@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "merchant bulk_discounts index" do
+describe "merchant bulk_discounts show" do
   before :each do
     @merchant1 = Merchant.create!(name: "Hair Care")
 
@@ -16,7 +16,7 @@ describe "merchant bulk_discounts index" do
     expect(page).to have_content("Quantity Threshold: #{@bulk_discount_1.quantity_threshold}")
     expect(page).to have_content("Percent Discount: #{@bulk_discount_1.percent_discount}")
 
-    expect(page).to have_no_content("Discount: #{@bulk_discount_2.id}")
+    expect(page).to_not have_content("Discount: #{@bulk_discount_2.id}")
   end
 
   #US5

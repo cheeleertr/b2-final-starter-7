@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "merchant bulk_discounts index" do
+describe "merchant bulk_discounts edit" do
   before :each do
     @merchant1 = Merchant.create!(name: "Hair Care")
 
