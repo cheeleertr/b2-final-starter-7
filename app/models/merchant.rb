@@ -59,4 +59,8 @@ class Merchant < ApplicationRecord
   def disabled_items
     items.where(status: 0)
   end
+
+  def unique_invoices_by_id
+    invoices.distinct.order(:id)
+  end
 end

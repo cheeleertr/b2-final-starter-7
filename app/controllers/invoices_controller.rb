@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   before_action :find_merchant, only: [:index]
 
   def index
-    @invoices = @merchant.invoices
+    @invoices = @merchant.unique_invoices_by_id
   end
 
   def show
