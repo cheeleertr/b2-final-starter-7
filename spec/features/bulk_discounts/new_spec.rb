@@ -27,4 +27,16 @@ describe "merchant bulk discount new page" do
       expect(page).to have_content("Discount: ##{bulk_discount4.id}, Quantity Threshold: 25, Percent Discount: 30")
     end
   end
+
+  it "shows a flash message if not all sections are filled in" do
+    visit new_merchant_bulk_discount_path(@merchant1)
+
+    fill_in "Quantity threshold", with: ""
+    fill_in "Percent discount", with: ""
+
+    click_button "Submit"
+    
+    expect(current_path).to eq(new_merchant_bulk_discount_path(@merchant1))
+    expect(page).to have_content("All fields must be completed, get your act together.")
+  end
 end

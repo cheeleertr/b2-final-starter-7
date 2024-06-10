@@ -26,10 +26,16 @@ class BulkDiscountsController < ApplicationController
   end
 
   def create
-    BulkDiscount.create!(quantity_threshold: params[:quantity_threshold],
+    discount = BulkDiscount.new(quantity_threshold: params[:quantity_threshold],
                 percent_discount: params[:percent_discount],
                 merchant: @merchant)
-    redirect_to merchant_bulk_discounts_path(@merchant)
+    if discount.save
+      flash.notice = 'Discount Has Been Created!'
+      redirect_to merchant_bulk_discounts_path(@merchant)
+    else
+      flash.notice = "All fields must be completed, get your act together."
+      redirect_to new_merchant_bulk_discount_path(@merchant)
+    end
   end
 
   def destroy
