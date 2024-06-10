@@ -123,10 +123,10 @@ RSpec.describe "invoices show" do
     visit merchant_invoice_path(@merchant1, @invoice_7)
 
     within "#the-status-#{@ii_8.id}" do
-      expect(page).to have_link("%#{@ii_8.highest_discount.percent_discount}", href:  merchant_bulk_discount_path(@merchant1, @discount2))
+      expect(page).to have_link("#{@ii_8.highest_discount.percent_discount}%", href:  merchant_bulk_discount_path(@merchant1, @discount2))
     end
     within "#the-status-#{@ii_9.id}" do
-      expect(page).to have_link("%#{@ii_9.highest_discount.percent_discount}", href:  merchant_bulk_discount_path(@merchant1, @discount3))
+      expect(page).to have_link("#{@ii_9.highest_discount.percent_discount}%", href:  merchant_bulk_discount_path(@merchant1, @discount3))
     end
   end
 end

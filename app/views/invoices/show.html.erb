@@ -43,7 +43,7 @@
               <% if i.highest_discount.nil? %>
                 <%= "N/A" %>
               <% else %>
-                <%= link_to "%#{i.highest_discount.percent_discount}", merchant_bulk_discount_path(@merchant, i.highest_discount.id) %>
+                <%= link_to "#{i.highest_discount.percent_discount}%", merchant_bulk_discount_path(@merchant, i.highest_discount.id) %>
               <% end %></td>
             <td style="text-align:center">
               <%= form_with model: @invoice, url: merchant_invoice_path(@merchant, @invoice), method: :patch, local: true do |f| %>
