@@ -147,5 +147,10 @@ describe Merchant do
       expect(@merchant1.disabled_items).to eq([@item_2, @item_3, @item_4, @item_7, @item_8])
       expect(@merchant2.disabled_items.sort).to eq([@item_5, @item_6])
     end
+
+    it "unique invoices" do
+      expect(@merchant1.invoices).to eq([@invoice_1, @invoice_2, @invoice_3, @invoice_4, @invoice_5, @invoice_6, @invoice_7, @invoice_7, @invoice_8])
+      expect(@merchant1.unique_invoices_by_id).to eq([@invoice_1, @invoice_2, @invoice_3, @invoice_4, @invoice_5, @invoice_6, @invoice_7, @invoice_8])
+    end
   end
 end
