@@ -52,7 +52,7 @@ describe "merchant invoices index" do
     @transaction8 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_8.id)
   end
 
-  it "can see all invoice ids that include at least one of my merchant's items" do
+  it "can see all unique invoice ids that include at least one of my merchant's items" do
     visit merchant_invoices_path(@merchant1)
 
     expect(page).to have_content(@invoice_1.id, count: 1)
