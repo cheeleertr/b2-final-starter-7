@@ -33,7 +33,6 @@ class Invoice < ApplicationRecord
     self.invoice_items
       .joins(:item)
       .joins("left join (#{@highest_discounts.to_sql}) as highest_discounts on highest_discounts.invoice_item_id = invoice_items.id")
-    #ask how is alias items_invoice_items
       .where("items_invoice_items.merchant_id = ?", @merchant_id)
       .group('invoice_items.invoice_id')
       .pluck(
