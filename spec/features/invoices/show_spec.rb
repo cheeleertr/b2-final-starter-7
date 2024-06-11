@@ -99,7 +99,6 @@ RSpec.describe "invoices show" do
       expect(page).to_not have_content("in progress")
     end
   end
-
   #US6
   it "shows the total revenue with bulk discount for this invoice" do
     visit merchant_invoice_path(@merchant1, @invoice_1)

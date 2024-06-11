@@ -8,11 +8,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
@@ -26,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -50,5 +47,4 @@ class ItemsController < ApplicationController
   def find_merchant
     @merchant = Merchant.find(params[:merchant_id])
   end
-
 end

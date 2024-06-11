@@ -7,7 +7,6 @@ describe "merchant bulk_discounts show" do
     @bulk_discount_1 = @merchant1.bulk_discounts.create!(quantity_threshold: 10, percent_discount: 10)
     @bulk_discount_2 = @merchant1.bulk_discounts.create!(quantity_threshold: 15, percent_discount: 15)
   end
-
   #US4
   it "can see all the bulk_discounts attributes including name, description, and selling price" do
     visit merchant_bulk_discount_path(@merchant1, @bulk_discount_1)
@@ -18,7 +17,6 @@ describe "merchant bulk_discounts show" do
 
     expect(page).to_not have_content("Discount: #{@bulk_discount_2.id}")
   end
-
   #US5
   it "has a link to update bulk_discount info" do
     visit merchant_bulk_discount_path(@merchant1, @bulk_discount_1)
